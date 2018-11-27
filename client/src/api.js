@@ -102,11 +102,16 @@ export default {
       .catch(errHandler)
   },
 
+  editProfile(body) {
+    return service
+      .put('/users/profile', body)
+      .then(res => res.data)
+      .catch(errHandler)
+  },
+
   addPicture(file) {
     const formData = new FormData();
     formData.append("picture", file)
-    // formData.append("firstname", 'Maxence')
-    console.log('DEBUG formData', formData.get("picture"));
     return service
       .post('/users/pictures', formData, {
         headers: {
